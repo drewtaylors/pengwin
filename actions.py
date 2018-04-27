@@ -8,6 +8,7 @@ Module which stores all function logic for Pengwin's commands.abs
 
 import urllib.request
 import json
+import pymongo
 
 
 def lookup(command):
