@@ -16,10 +16,10 @@ from slackclient import SlackClient
 import actions
 
 # BOT USER OAUTH
-SLACK_BOT_TOKEN='xoxb-353470037137-CqUZQ6hdWF8rtsk5BglTRQN2'
+# export BOT_USER_TOKEN='xyz'
 
 # instantiate Slack client
-slack_client = SlackClient(os.environ.get(SLACK_BOT_TOKEN))
+slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
 # starterbot's user ID in Slack: value is assigned after the bot starts up
 starterbot_id = None
 
@@ -59,7 +59,7 @@ def handle_command(command, channel):
 
     # Finds and executes the given command, filling in response
     response = None
-    
+
     # This is where you start to implement more commands!
     if command.startswith(EXAMPLE_COMMAND):
         response = 'Sure...write some more code then I can do that!'
