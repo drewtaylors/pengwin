@@ -9,6 +9,7 @@ Module which stores all function logic for Pengwin's commands.abs
 import urllib.request
 import json
 import pymongo
+import nba
 
 
 def lookup(command):
@@ -32,6 +33,17 @@ def nba(command):
         Provides the user with a nice info layout about current
         NBA games and statistics.
     """
-    with urllib.request.urlopen("http://data.nba.net/10s/prod/v1/today.json") as url:
-        data = json.loads(url.read().decode())
-        return data
+    try:
+        block = command.split()[1]
+    except KeyError:
+        return 'Please provide a specific block when using the "nba" command.'
+
+    if block == 'summary':
+        with urllib.request.urlopen("http://data.nba.net/10s/prod/v1/today.json") as url:
+            data = json.loads(url.read().decode())
+            return data
+    elif block == 'teams':
+        with urllib.request.urlopen("http://data.nba.net/10s/prod/2017/teams_config.json") as url:
+            data = json.loads(url.read().decode())
+            return data
+    elif block == 
