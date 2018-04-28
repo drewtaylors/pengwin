@@ -1,5 +1,4 @@
 # Pengwin - Version 0.1.0
-
 Pengwin is a Slack chatbot which reports sports stats to users. The goal is to expand Pengwin's funtionality across multiple tech spaces.
 
 ## Getting Started

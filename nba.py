@@ -8,6 +8,7 @@ Module which stores all function logic for NBA specific commands.
 
 import urllib.request
 import json
+import database
 
 # NEED TO STORE IN THIS IN A DB
 teams = {
@@ -44,6 +45,9 @@ teams = {
 }
 
 def current():
+    """
+        Displays current game(s) if there are any going on. Returns an empty string if None.
+    """
     with urllib.request.urlopen("http://data.nba.net/10s/prod/v1/20180427/scoreboard.json") as url:
         data = json.loads(url.read().decode())
         if data is not None:
@@ -53,3 +57,10 @@ def current():
                     print(game['hTeam']['linescore'])
         else:
             return ''
+
+def today_schedule():
+    """
+        Displays today's schedule of games. Returns an empty string if None.
+    """
+    return pass
+
