@@ -6,6 +6,9 @@ Module which stores all function logic for NBA specific commands.
 
 """
 
+import urllib.request
+import json
+
 # NEED TO STORE IN THIS IN A DB
 teams = {
     'Hawks': {'id': '1610612737', 'acronym': 'ATL', 'city': 'Atlanta', 'team': 'Hawks'}, 
@@ -39,3 +42,14 @@ teams = {
     'Jazz': {'id': '1610612762', 'acronym': 'UTA', 'city': 'Utah', 'team': 'Jazz'}, 
     'Wizards': {'id': '1610612764', 'acronym': 'WAS', 'city': 'Washington', 'team': 'Wizards'}
 }
+
+def current():
+    with urllib.request.urlopen("http://data.nba.net/10s/prod/v1/20180427/scoreboard.json") as url:
+        data = json.loads(url.read().decode())
+        if data is not None:
+            for game in data['games']:
+                if game['isGameActivated'] == True:
+                    print(game['vTeam']['linescore'])
+                    print(game['hTeam']['linescore'])
+        else:
+            return ''

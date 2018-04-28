@@ -46,4 +46,7 @@ def nba(command):
         with urllib.request.urlopen("http://data.nba.net/10s/prod/2017/teams_config.json") as url:
             data = json.loads(url.read().decode())
             return data
-    elif block == 
+    elif block == 'current game':
+        return nba.current()
+
+
